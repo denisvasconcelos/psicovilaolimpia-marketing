@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -110,7 +110,6 @@ export const footerData = {
     { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: 'https://wa.me/5511985946105?text=Olá! Gostaria de mais informações.', target: '_blank' },
   ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="${getAsset('/favicons/favicon-32x32.png')}" alt="Psico Vila Olimpia logo" loading="lazy"></img>
     Feito com ❤️ pela <a class="text-gray-300 underline hover:text-gray-100" href="https://psicovilaolimpia.com.br/"> Psico Vila Olimpia</a> · Todos os direitos reservados.
   `,
 };

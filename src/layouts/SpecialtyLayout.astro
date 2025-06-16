@@ -3,7 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import MethodologySection from '~/components/specialty/MethodologySection.astro';
+import WhenToSeekSection from '~/components/specialty/WhenToSeekSection.astro';
 
 export interface Props {
   specialty: {
@@ -63,10 +64,6 @@ const { specialty } = Astro.props;
         target: '_blank',
         icon: 'tabler:brand-whatsapp',
       },
-      { 
-        text: 'Ver Outras Especialidades', 
-        href: '/especialidades' 
-      },
     ]}
     image={specialty.heroImage}
   >
@@ -85,7 +82,11 @@ const { specialty } = Astro.props;
     title={specialty.whatIs.title}
     content={specialty.whatIs.content}
     image={specialty.whatIs.image}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
   <!-- Como podemos ajudar - Features Widget -->
   <Features
@@ -94,124 +95,20 @@ const { specialty } = Astro.props;
     subtitle="Conheça as principais áreas em que nossa especialidade pode transformar sua vida"
     items={specialty.howWeHelp.items}
     columns={2}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features>
-
-  <!-- Nossa metodologia - Content Widget -->
-  <Content
-    isReversed
-    tagline="Nossa abordagem"
-    title={specialty.methodology.title}
-    content={specialty.methodology.content}
-    items={specialty.methodology.highlights.map(highlight => ({
-      title: highlight,
-      icon: 'tabler:check'
-    }))}
-    image={{
-      src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
-      alt: `Metodologia de ${specialty.title} - Psico Vila Olimpia`,
-    }}
   />
 
-  <!-- Quando procurar - Section customizada -->
-  <section class="py-16 md:py-20 lg:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6">
-      
-      <!-- Header da seção -->
-      <div class="mx-auto max-w-3xl text-center mb-12 md:mb-16">
-        <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">
-          Sinais importantes
-        </p>
-        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
-          {specialty.whenToSeek.title}
-        </h2>
-        <p class="text-xl text-muted dark:text-slate-300">
-          {specialty.whenToSeek.content}
-        </p>
-      </div>
+  <!-- Nossa metodologia - External Component -->
+  <MethodologySection 
+    methodology={specialty.methodology}
+    specialtyTitle={specialty.title}
+  />
 
-      <!-- Lista de sintomas em grid -->
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-12 md:mb-16">
-        {specialty.whenToSeek.symptoms.map(symptom => (
-          <div class="flex items-start p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
-            <astro-icon name="tabler:alert-circle" class="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
-            <span class="text-gray-700 dark:text-gray-300">{symptom}</span>
-          </div>
-        ))}
-      </div>
+  <!-- Quando procurar - External Component -->
+  <WhenToSeekSection 
+    whenToSeek={specialty.whenToSeek}
+    specialtyTitle={specialty.title}
+  />
 
-      <!-- CTA único centralizado -->
-      <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 md:p-12 text-center">
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Identificou-se com algum desses sinais?
-        </h3>
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          Não hesite em buscar ajuda. Quanto antes começarmos o trabalho terapêutico, 
-          mais rápido você poderá experimentar melhorias significativas em sua qualidade de vida.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href={`https://wa.me/5511985946105?text=Olá! Me identifiquei com alguns sinais de ${specialty.title} e gostaria de agendar uma consulta.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-colors duration-300 text-lg shadow-lg hover:shadow-xl"
-          >
-            <astro-icon name="tabler:brand-whatsapp" class="w-6 h-6 mr-3" />
-            Agendar {specialty.title}
-          </a>
-          
-          <a 
-            href="/contato"
-            class="inline-flex items-center justify-center px-8 py-4 bg-secondary hover:bg-secondary/90 text-white font-medium rounded-lg transition-colors duration-300 text-lg"
-          >
-            <astro-icon name="tabler:mail" class="w-6 h-6 mr-3" />
-            Enviar Mensagem
-          </a>
-          
-          <a 
-            href="/profissionais"
-            class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-lg transition-colors duration-300 text-lg"
-          >
-            Conhecer Profissionais
-            <astro-icon name="tabler:arrow-right" class="w-6 h-6 ml-3" />
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Background decorativo -->
-    <div class="absolute inset-0 bg-gray-50 dark:bg-transparent -z-10"></div>
-  </section>
-
-  <!-- CallToAction Widget *********** -->
-  <CallToAction
-    title="Pronto para começar sua transformação?"
-    subtitle={`Agende sua sessão de ${specialty.title} e dê o primeiro passo rumo ao seu bem-estar`}
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Agendar no WhatsApp',
-        href: `https://wa.me/5511985946105?text=Olá! Quero agendar minha consulta de ${specialty.title}.`,
-        target: '_blank',
-        icon: 'tabler:brand-whatsapp',
-      },
-      {
-        variant: 'secondary',
-        text: 'Ver Todas as Especialidades',
-        href: '/especialidades',
-        icon: 'tabler:list',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20"></div>
-    </Fragment>
-  </CallToAction>
 </Layout>
 
 <style>
