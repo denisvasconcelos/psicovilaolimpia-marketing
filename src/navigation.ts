@@ -3,181 +3,114 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Especialidades',
       links: [
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          text: 'Terapia Individual',
+          href: getPermalink('/terapia-individual'),
         },
         {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
+          text: 'Terapia de Casal',
+          href: getPermalink('/terapia-de-casal'),
         },
         {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
+          text: 'Terapia Familiar',
+          href: getPermalink('/terapia-familiar'),
         },
         {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
+          text: 'Terapia Infantil e Adolescente',
+          href: getPermalink('/terapia-infantil-adolescente'),
+        },
+        {
+          text: 'Psiquiatria',
+          href: getPermalink('/psiquiatria'),
+        },
+        {
+          text: 'Avaliações Psicológicas',
+          href: getPermalink('/avaliacoes-psicologicas'),
         },
       ],
     },
     {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
+      text: 'Profissionais',
+      href: getPermalink('/profissionais'),
     },
     {
-      text: 'Landing',
-      links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
-      ],
+      text: 'Sobre Nós',
+      href: getPermalink('/sobre-nos'),
     },
     {
       text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
+      href: getBlogPermalink(),
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Contato',
+      href: getPermalink('/contato'),
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [
+    { 
+      text: 'Agendar Consulta', 
+      href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta.', 
+      target: '_blank',
+      variant: 'primary',
+      icon: 'tabler:brand-whatsapp'
+    }
+  ],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: 'Especialidades',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Terapia Individual', href: getPermalink('/terapia-individual') },
+        { text: 'Terapia de Casal', href: getPermalink('/terapia-de-casal') },
+        { text: 'Terapia Familiar', href: getPermalink('/terapia-familiar') },
+        { text: 'Terapia Infantil e Adolescente', href: getPermalink('/terapia-infantil-adolescente') },
+        { text: 'Psiquiatria', href: getPermalink('/psiquiatria') },
+        { text: 'Avaliações Psicológicas', href: getPermalink('/avaliacoes-psicologicas') },
       ],
     },
     {
-      title: 'Platform',
+      title: 'Empresa',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Sobre Nós', href: getPermalink('/sobre-nos') },
+        { text: 'Profissionais', href: getPermalink('/profissionais') },
+        { text: 'Blog', href: getBlogPermalink() },
+        { text: 'Contato', href: getPermalink('/contato') },
       ],
     },
     {
-      title: 'Support',
+      title: 'Contato',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: 'WhatsApp: (11) 98594-6105', href: 'https://wa.me/5511985946105', target: '_blank' },
+        { text: 'contato@psicovilaolimpia.com.br', href: 'mailto:contato@psicovilaolimpia.com.br' },
+        { text: 'Rua Helena, 285 - 10º andar', href: 'https://maps.google.com/?q=Rua+Helena+285+Vila+Olimpia+São+Paulo', target: '_blank' },
+        { text: 'Vila Olímpia - São Paulo/SP', href: 'https://maps.google.com/?q=Rua+Helena+285+Vila+Olimpia+São+Paulo', target: '_blank' },
       ],
     },
     {
-      title: 'Company',
+      title: 'Horários',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'Segunda a Sexta: 8h às 20h' },
+        { text: 'Sábado: 8h às 12h' },
+        { text: 'Domingo: Fechado' },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Política de Privacidade', href: getPermalink('/politica-privacidade') },
+    { text: 'Termos de Uso', href: getPermalink('/termos-uso') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/psicovilaolimpia/', target: '_blank' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/psicovilaolimpia/', target: '_blank' },
+    { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://br.linkedin.com/company/psico-vila-ol%C3%ADmpia', target: '_blank' },
+    { ariaLabel: 'WhatsApp', icon: 'tabler:brand-whatsapp', href: 'https://wa.me/5511985946105?text=Olá! Gostaria de mais informações.', target: '_blank' },
   ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="${getAsset('/favicons/favicon-32x32.png')}" alt="Psico Vila Olimpia logo" loading="lazy"></img>
+    Feito com ❤️ pela <a class="text-gray-300 underline hover:text-gray-100" href="https://psicovilaolimpia.com.br/"> Psico Vila Olimpia</a> · Todos os direitos reservados.
   `,
 };

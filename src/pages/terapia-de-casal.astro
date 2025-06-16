@@ -1,0 +1,106 @@
+---
+import SpecialtyLayout from '~/layouts/SpecialtyLayout.astro';
+
+const specialty = {
+  title: 'Terapia de Casal',
+  subtitle: 'Fortalecendo vínculos e construindo relacionamentos saudáveis',
+  slug: 'terapia-de-casal',
+  icon: 'tabler:heart',
+  description: 'Trabalhamos comunicação, resolução de conflitos e construção de relacionamentos duradouros e felizes',
+  
+  heroImage: {
+    src: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+    alt: 'Terapia de Casal - Psico Vila Olimpia - Fortalecendo relacionamentos',
+  },
+
+  whatIs: {
+    title: 'O que é a Terapia de Casal?',
+    content: `A terapia de casal é um processo terapêutico especializado que ajuda casais a melhorar sua comunicação, resolver conflitos e fortalecer seus vínculos afetivos. É um espaço neutro e seguro onde ambos os parceiros podem expressar seus sentimentos e necessidades de forma construtiva.
+
+    Nossa abordagem foca na reconstrução da intimidade emocional, melhoria da comunicação e desenvolvimento de ferramentas práticas para lidar com os desafios do relacionamento. Utilizamos técnicas baseadas em evidências científicas para promover mudanças positivas e duradouras na dinâmica do casal.
+
+    Cada sessão é conduzida com imparcialidade, criando um ambiente acolhedor onde ambos se sintam ouvidos e compreendidos, trabalhando juntos na construção de um relacionamento mais saudável e satisfatório.`,
+    
+    image: {
+      src: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Casal em terapia - ambiente acolhedor e profissional',
+    },
+  },
+
+  howWeHelp: {
+    title: 'Como fortalecemos seu relacionamento',
+    items: [
+      {
+        title: 'Comunicação Assertiva',
+        description: 'Desenvolvimento de habilidades para expressar sentimentos e necessidades de forma clara, respeitosa e eficaz.',
+        icon: 'tabler:message-2',
+      },
+      {
+        title: 'Resolução de Conflitos',
+        description: 'Técnicas para transformar discussões destrutivas em diálogos construtivos, encontrando soluções que beneficiem ambos.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'Intimidade e Conexão',
+        description: 'Reconstrução da intimidade emocional e física, fortalecendo a conexão e cumplicidade entre o casal.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Confiança e Segurança',
+        description: 'Trabalho especializado para reconstruir a confiança após traições, mentiras ou outros rompimentos de confiança.',
+        icon: 'tabler:shield-heart',
+      },
+      {
+        title: 'Planejamento de Futuro',
+        description: 'Alinhamento de objetivos, sonhos e expectativas para construir um futuro em comum de forma consciente.',
+        icon: 'tabler:map-2',
+      },
+      {
+        title: 'Vida Sexual Saudável',
+        description: 'Abordagem respeitosa e profissional de questões relacionadas à intimidade e satisfação sexual do casal.',
+        icon: 'tabler:mood-heart',
+      },
+    ],
+  },
+
+  methodology: {
+    title: 'Nossa Abordagem: TCC Sistêmica para Casais',
+    content: `Utilizamos uma combinação da Terapia Cognitivo-Comportamental com abordagens sistêmicas, especificamente adaptadas para o trabalho com casais. Nossa metodologia foca na identificação de padrões disfuncionais de comunicação e comportamento.
+
+    Trabalhamos com técnicas práticas e exercícios estruturados que o casal pode aplicar no dia a dia. Cada sessão é planejada para promover insights, melhorar a compreensão mútua e desenvolver habilidades concretas para fortalecer o relacionamento.`,
+    
+    highlights: [
+      'Técnicas de comunicação não-violenta',
+      'Exercícios práticos para aplicar em casa',
+      'Identificação de padrões disfuncionais',
+      'Desenvolvimento de rituais de conexão',
+      'Ferramentas para gestão de conflitos',
+      'Fortalecimento da equipe conjugal',
+    ],
+  },
+
+  whenToSeek: {
+    title: 'Quando procurar Terapia de Casal?',
+    content: 'A terapia de casal pode ser benéfica em diferentes momentos do relacionamento. Reconhecer os sinais é fundamental:',
+    symptoms: [
+      'Discussões frequentes que não chegam a uma resolução',
+      'Sensação de distanciamento emocional entre o casal',
+      'Dificuldades na comunicação ou mal-entendidos constantes',
+      'Perda de intimidade física ou emocional',
+      'Desconfiança, ciúmes excessivos ou questões de infidelidade',
+      'Decisões importantes que geram conflito constante',
+      'Diferentes visões sobre o futuro do relacionamento',
+      'Problemas relacionados à vida sexual do casal',
+      'Dificuldades para lidar com mudanças (casamento, filhos, trabalho)',
+      'Desejo de fortalecer e melhorar um relacionamento já bom',
+    ],
+  },
+
+  metadata: {
+    title: 'Terapia de Casal em São Paulo | Psico Vila Olimpia',
+    description: 'Terapia de casal especializada na Vila Olímpia. Fortalecimento de vínculos, comunicação e resolução de conflitos. Psicólogas experientes.',
+  },
+};
+---
+
+<SpecialtyLayout {specialty} />

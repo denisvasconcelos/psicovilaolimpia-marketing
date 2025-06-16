@@ -1,34 +1,34 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: 'Psico Vila Olimpia'
+  site: 'https://www.psicovilaolimpia.com.br'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: sCynntAf5lAhq5_0ZONvSJBfLCxBQkYo5mT9P_wPLUY
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: 'Psico Vila Olimpia'
+    template: '%s — Psico Vila Olimpia'
+  description: "Psicoterapia de qualidade na Vila Olímpia. Terapia individual, casal, familiar. Profissionais especializadas, atendimento presencial e online."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: 'Psico Vila Olimpia'
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/default.jpg'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@psicovilaolimpia'
+    site: '@psicovilaolimpia'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: pt
   textDirection: ltr
 
 apps:
@@ -66,7 +66,77 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: null # Desabilitado conforme solicitado
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  
+  tokens:
+    default:
+      fonts:
+        sans: ['Roboto', 'Inter Variable', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        serif: ['Roboto', 'ui-serif', 'Georgia', 'serif']
+        mono: ['ui-monospace', 'SFMono-Regular', 'Monaco', 'Consolas', 'monospace']
+      colors:
+        default: '#046a80'
+        primary: '#046a80'
+        secondary: '#73CEE1'
+        accent: '#046a80'
+        neutral: '#f8f9fa'
+        base: '#ffffff'
+        info: '#0ea5e9'
+        success: '#22c55e'
+        warning: '#f59e0b'
+        error: '#ef4444'
+        muted: '#2c3e50'
+
+# Configurações específicas da Psico Vila Olimpia
+company:
+  name: 'Psico Vila Olimpia'
+  address: 'Rua Helena, 285 - 10º andar Vila Olímpia - São Paulo/SP'
+  zipCode: '04552-050'
+  phone: '(11) 98594-6105'
+  email: 'contato@psicovilaolimpia.com.br'
+  whatsapp: '5511985946105'
+  
+  businessHours:
+    weekdays: 'Segunda a Sexta: 8h às 20h'
+    saturday: 'Sábado: 8h às 12h'
+    sunday: 'Domingo: Fechado'
+  
+  social:
+    instagram: 'https://www.instagram.com/psicovilaolimpia/'
+    facebook: 'https://www.facebook.com/psicovilaolimpia/'
+    linkedin: 'https://br.linkedin.com/company/psico-vila-ol%C3%ADmpia'
+
+# Especialidades conforme PRD
+specialties:
+  - slug: 'terapia-individual'
+    title: 'Terapia Individual'
+    description: 'Descubra seu potencial através do autoconhecimento. Tratamos ansiedade, depressão, estresse e promovemos o equilíbrio emocional.'
+    icon: 'tabler:user'
+  
+  - slug: 'terapia-de-casal'
+    title: 'Terapia de Casal'
+    description: 'Fortaleça seus vínculos afetivos. Trabalhamos comunicação, conflitos e construção de relacionamentos saudáveis.'
+    icon: 'tabler:heart'
+  
+  - slug: 'terapia-familiar'
+    title: 'Terapia Familiar'
+    description: 'Harmonia familiar é possível. Mediamos conflitos e fortalecemos laços entre gerações.'
+    icon: 'tabler:users'
+  
+  - slug: 'terapia-infantil-adolescente'
+    title: 'Terapia Infantil e Adolescente'
+    description: 'Cuidado especializado para cada fase do desenvolvimento. Apoio em dificuldades escolares, comportamentais e emocionais.'
+    icon: 'tabler:baby-carriage'
+  
+  - slug: 'psiquiatria'
+    title: 'Psiquiatria'
+    description: 'Tratamento médico integrado. Diagnóstico e medicação quando necessário, sempre com abordagem humanizada.'
+    icon: 'tabler:brain'
+  
+  - slug: 'avaliacoes-psicologicas'
+    title: 'Avaliações Psicológicas'
+    description: 'Laudos especializados para cirurgias, concursos e demandas específicas com rigor técnico e agilidade.'
+    icon: 'tabler:clipboard-check'

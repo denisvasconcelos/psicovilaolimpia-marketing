@@ -1,228 +1,382 @@
 ---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import unidade01 from '~/assets/images/unidade/psico-vila-olimpia-01.jpg';
+import unidade03 from '~/assets/images/unidade/psico-vila-olimpia-03.jpg';
+import unidade05 from '~/assets/images/unidade/psico-vila-olimpia-05.jpg';
+import unidade06 from '~/assets/images/unidade/psico-vila-olimpia-06.jpg';
+import unidade07 from '~/assets/images/unidade/psico-vila-olimpia-07.jpg';
+import unidade08 from '~/assets/images/unidade/psico-vila-olimpia-08.jpg';
+import unidade09 from '~/assets/images/unidade/psico-vila-olimpia-09.jpg';
 
 const metadata = {
-  title: 'About us',
+  title: 'Sobre Nós | Psico Vila Olimpia - Nossa História e Missão',
+  description: 'Conheça a história da Psico Vila Olimpia, nossa missão, valores e diferenciais. Mais de 10 anos transformando vidas através da psicoterapia de qualidade.',
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+    tagline="Sobre Nós"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
   >
     <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white"> Beautiful Website Templates</span>
+      Nossa História e <span class="text-primary dark:text-blue-300">Missão</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      Mais de uma década transformando vidas através da psicoterapia de qualidade. 
+      Conheça nossa trajetória, valores e o que nos torna únicos no cuidado com a saúde mental.
     </Fragment>
   </Hero>
 
   <!-- Stats Widget ****************** -->
-
   <Stats
-    title="Statistics about us"
+    title="Nossa trajetória em números"
+    subtitle="Dados que refletem nosso compromisso com a excelência no atendimento psicológico"
     stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
+      { title: 'Anos de experiência', amount: '10+' },
+      { title: 'Vidas transformadas', amount: '500+' },
+      { title: 'Profissionais especializadas', amount: '3' },
+      { title: 'Satisfação dos pacientes', amount: '98%' },
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
+  <!-- Nossa Jornada - Seção customizada -->
+  <section class="py-8 md:py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-center mb-8 md:mb-12">
+        <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">Nossa Jornada</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+          Nossa História
+        </h2>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed space-y-6">
+          <p>
+            Desde 2018, a Psico Vila Olímpia oferece atendimento psicológico especializado para terapia individual, de casal, familiar, infantil e adolescente. Atendemos nas modalidades presencial, online e híbrida, adaptando-nos às necessidades de cada paciente.
+          </p>
+          
+          <p>
+            Nossa clínica está localizada na Vila Olímpia, zona sul de São Paulo, em um espaço cuidadosamente projetado para ser aconchegante, seguro e sigiloso, proporcionando o máximo conforto e bem-estar durante as sessões.
+          </p>
+          
+          <p>
+            Todas as nossas psicólogas são pós-graduadas com vasta experiência clínica e aplicam a abordagem da Terapia Cognitivo-Comportamental (TCC) em seus atendimentos. Nossa equipe possui expertise para atender as mais diversas demandas psicológicas, sempre com excelência e comprometimento.
+          </p>
+          
+          <p>
+            Independentemente da modalidade escolhida - presencial, online ou híbrida - garantimos o mesmo padrão de qualidade e profissionalismo em todos os atendimentos, oferecendo o suporte necessário para sua jornada de autoconhecimento e bem-estar emocional.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute inset-0 bg-gray-50 dark:bg-transparent -z-10"></div>
+  </section>
 
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
-    columns={3}
-    isBeforeContent={true}
+  <!-- Missão, Visão e Valores - Content Widget -->
+  <Content
+    title="Missão, Visão e Valores"
+    subtitle="Os pilares que guiam nosso trabalho e nossa relação com cada paciente"
     items={[
       {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
+        title: 'Nossa Missão',
+        description: 'Proporcionar atendimento psicológico de excelência, criando um espaço seguro e acolhedor onde cada pessoa pode descobrir seu potencial de transformação e bem-estar.',
+        icon: 'tabler:target',
       },
       {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
+        title: 'Nossa Visão',
+        description: 'Ser reconhecida como a principal referência em psicoterapia premium em São Paulo, expandindo nosso impacto positivo na saúde mental da comunidade.',
+        icon: 'tabler:eye',
       },
       {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
-      },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    columns={3}
-    isAfterContent={true}
-    items={[
-      {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
+        title: 'Nossos Valores',
+        description: 'Excelência no atendimento, acolhimento genuíno, ética profissional irrepreensível, inovação constante e foco em resultados reais para nossos pacientes.',
+        icon: 'tabler:heart',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Valores da Psico Vila Olimpia - Excelência, acolhimento e ética',
     }}
   />
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+  <!-- Diferenciais - Features3 Widget -->
+  <Features3
+    title="O que nos torna únicos"
+    subtitle="Conheça os diferenciais que fazem da Psico Vila Olimpia a escolha ideal para seu cuidado psicológico"
+    columns={3}
     items={[
       {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+        title: 'Localização Premium',
+        description: 'Consultórios modernos e acolhedores na Vila Olímpia, uma das regiões mais nobres de São Paulo.',
+        icon: 'tabler:building',
       },
       {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
-      },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-      },
-    ]}
-  />
-
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
-      },
-      {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
-      },
-      {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
+        title: 'Equipe Especializada',
+        description: 'Profissionais pós-graduadas em TCC com vasta experiência clínica e formação continuada.',
         icon: 'tabler:award',
       },
+      {
+        title: 'Flexibilidade Total',
+        description: 'Atendimento presencial, online e híbrido para se adaptar completamente à sua rotina.',
+        icon: 'tabler:device-laptop',
+      },
+      {
+        title: 'Agilidade no Atendimento',
+        description: 'Agendamento rápido via WhatsApp e horários flexíveis, incluindo fins de semana.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Sigilo Absoluto',
+        description: 'Ambiente discreto e profissional com total garantia de privacidade e confidencialidade.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Resultados Comprovados',
+        description: 'Histórico de sucesso de mais de 10 anos com centenas de vidas transformadas.',
+        icon: 'tabler:chart-line',
+      },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
 
-  <!-- Features2 Widget ************** -->
+  <!-- Um espaço pensado para o seu bem-estar - Seção com carrousel -->
+  <section class="py-8 md:py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-8 md:gap-12 lg:gap-16 md:grid-cols-2 lg:items-center">
+        
+        <!-- Carrousel de imagens -->
+        <div class="order-2 md:order-1">
+          <div class="carousel-container relative overflow-hidden rounded-xl shadow-lg">
+            <div class="carousel-track flex transition-transform duration-500 ease-in-out" id="carouselTrackAbout">
+              <img src={unidade01.src} alt="Consultório Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade03.src} alt="Ambiente acolhedor Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade05.src} alt="Sala de atendimento Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade06.src} alt="Recepção Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade07.src} alt="Espaço terapêutico Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade08.src} alt="Consultório premium Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade09.src} alt="Ambiente profissional Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white active" data-slide="0"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="1"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="2"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="3"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="4"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="5"></button>
+              <button class="carousel-indicator-about w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="6"></button>
+            </div>
+          </div>
+        </div>
 
+        <!-- Conteúdo -->
+        <div class="order-1 md:order-2">
+          <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">
+            Nosso Espaço
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+            Um espaço pensado para o seu bem-estar
+          </h2>
+          <p class="text-xl text-muted dark:text-slate-300 mb-8">
+            Ambiente cuidadosamente projetado para proporcionar acolhimento e conforto durante suas sessões
+          </p>
+
+          <!-- Lista de características -->
+          <div class="grid gap-6 sm:grid-cols-1">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:shield-lock" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Consultórios Privativos</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Espaços reservados com isolamento acústico para garantir total privacidade.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:heart" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Ambiente Acolhedor</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Decoração cuidadosa e iluminação pensada para promover relaxamento.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:map-pin" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Localização Privilegiada</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Fácil acesso na Vila Olímpia com estacionamento e transporte público.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA Button -->
+          <div class="mt-8">
+            <a 
+              href="https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma visita para conhecer a clínica."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+            >
+              <astro-icon name="tabler:calendar-plus" class="w-5 h-5 mr-2" />
+              Agendar Visita
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nossa Abordagem - Features2 Widget -->
   <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
+    title="Nossa Abordagem Terapêutica"
+    subtitle="Metodologia baseada em evidências científicas com foco em resultados práticos e duradouros"
     items={[
       {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
+        title: 'Terapia Cognitivo-Comportamental (TCC)',
+        description: 'Utilizamos a TCC, uma das abordagens mais eficazes e cientificamente comprovadas da psicologia moderna.',
+        icon: 'tabler:brain',
       },
       {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
+        title: 'Foco em Resultados',
+        description: 'Trabalhamos com objetivos claros e mensuráveis, acompanhando seu progresso a cada sessão.',
+        icon: 'tabler:target',
       },
       {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
+        title: 'Técnicas Práticas',
+        description: 'Oferecemos ferramentas concretas que você pode aplicar no seu dia a dia para promover mudanças reais.',
+        icon: 'tabler:tools',
       },
       {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
+        title: 'Atendimento Humanizado',
+        description: 'Cada pessoa é única. Adaptamos nossa abordagem às suas necessidades específicas e ritmo pessoal.',
+        icon: 'tabler:heart-handshake',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Pronto para conhecer nossa equipe?"
+    subtitle="Conheça as profissionais especializadas que irão acompanhar sua jornada de transformação"
+    actions={[
       {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
+        variant: 'primary',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20"></div>
+    </Fragment>
+  </CallToAction>
 </Layout>
+
+<style>
+  /* Estilos do carrousel */
+  .carousel-indicator-about.active {
+    background-color: white !important;
+  }
+</style>
+
+<script is:inline>
+  // Função para inicializar o carrousel da página sobre
+  function initAboutCarousel() {
+    const track = document.getElementById('carouselTrackAbout');
+    const indicators = document.querySelectorAll('.carousel-indicator-about');
+    
+    if (!track || indicators.length === 0) {
+      console.warn('About carousel elements not found');
+      return;
+    }
+
+    let currentSlide = 0;
+    const totalSlides = 7;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    // Indicadores clicáveis
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+        
+        // Reiniciar auto-play quando usuário interage
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      });
+    });
+
+    // Função para iniciar auto-play
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 3000);
+    }
+
+    // Inicializar carrousel
+    updateCarousel();
+    startAutoPlay();
+
+    // Pausar auto-play quando mouse está sobre o carrousel
+    track.parentElement.addEventListener('mouseenter', () => {
+      clearInterval(autoPlayInterval);
+    });
+
+    track.parentElement.addEventListener('mouseleave', () => {
+      startAutoPlay();
+    });
+  }
+
+  // Inicializar quando DOM estiver pronto
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAboutCarousel);
+  } else {
+    initAboutCarousel();
+  }
+</script>

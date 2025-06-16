@@ -1,0 +1,106 @@
+---
+import SpecialtyLayout from '~/layouts/SpecialtyLayout.astro';
+
+const specialty = {
+  title: 'Terapia Individual',
+  subtitle: 'Seu caminho para o autoconhecimento',
+  slug: 'terapia-individual',
+  icon: 'tabler:user',
+  description: 'Descubra seu potencial e conquiste o equilíbrio emocional com acompanhamento personalizado',
+  
+  heroImage: {
+    src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+    alt: 'Terapia Individual - Psico Vila Olimpia - Ambiente acolhedor para autoconhecimento',
+  },
+
+  whatIs: {
+    title: 'O que é a Terapia Individual?',
+    content: `A terapia individual é um processo terapêutico personalizado onde você trabalha diretamente com uma psicóloga especializada para explorar seus pensamentos, emoções e comportamentos. 
+
+    É um espaço seguro e confidencial para o autoconhecimento, onde você pode falar livremente sobre suas preocupações, desafios e objetivos pessoais. Nossa abordagem baseada na Terapia Cognitivo-Comportamental (TCC) oferece ferramentas práticas e eficazes para promover mudanças positivas e duradouras em sua vida.
+
+    Cada sessão é cuidadosamente estruturada para atender suas necessidades específicas, respeitando seu ritmo e promovendo um ambiente de total acolhimento e compreensão.`,
+    
+    image: {
+      src: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1773&q=80',
+      alt: 'Sessão de terapia individual - espaço acolhedor e profissional',
+    },
+  },
+
+  howWeHelp: {
+    title: 'Como podemos ajudar você',
+    items: [
+      {
+        title: 'Ansiedade e Síndrome do Pânico',
+        description: 'Técnicas eficazes para controlar a ansiedade, reduzir sintomas de pânico e recuperar sua tranquilidade no dia a dia.',
+        icon: 'tabler:heart-rate-monitor',
+      },
+      {
+        title: 'Depressão e Transtornos de Humor',
+        description: 'Apoio especializado para superar a depressão, melhorar o humor e redescobrir a motivação e alegria de viver.',
+        icon: 'tabler:mood-happy',
+      },
+      {
+        title: 'Baixa Autoestima e Insegurança',
+        description: 'Fortalecimento da autoconfiança, desenvolvimento de uma autoimagem positiva e superação de crenças limitantes.',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Estresse e Burnout',
+        description: 'Estratégias para gerenciar o estresse no trabalho e na vida pessoal, prevenindo o esgotamento emocional.',
+        icon: 'tabler:battery',
+      },
+      {
+        title: 'Dificuldades de Relacionamento',
+        description: 'Melhoria das habilidades sociais, comunicação assertiva e construção de relacionamentos mais saudáveis.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Autoconhecimento e Desenvolvimento Pessoal',
+        description: 'Exploração do seu potencial, definição de objetivos de vida e desenvolvimento de uma versão melhor de si mesmo.',
+        icon: 'tabler:growth',
+      },
+    ],
+  },
+
+  methodology: {
+    title: 'Nossa Metodologia: TCC e Abordagem Humanizada',
+    content: `Utilizamos a Terapia Cognitivo-Comportamental (TCC), uma das abordagens mais eficazes e cientificamente comprovadas da psicologia. Nossa metodologia combina técnicas baseadas em evidências com um cuidado genuinamente humano.
+
+    A TCC ajuda você a identificar e modificar padrões de pensamento negativos, desenvolvendo estratégias práticas para lidar com desafios do cotidiano. Focamos em soluções concretas e resultados mensuráveis, sempre respeitando seu ritmo e individualidade.`,
+    
+    highlights: [
+      'Técnicas baseadas em evidências científicas',
+      'Abordagem prática e orientada para resultados',
+      'Desenvolvimento de estratégias de enfrentamento',
+      'Foco na modificação de padrões de pensamento',
+      'Exercícios práticos para aplicar no dia a dia',
+      'Monitoramento constante do progresso terapêutico',
+    ],
+  },
+
+  whenToSeek: {
+    title: 'Quando procurar Terapia Individual?',
+    content: 'A terapia individual pode ser benéfica em diversos momentos da vida. Reconhecer os sinais é o primeiro passo para buscar ajuda:',
+    symptoms: [
+      'Sentimentos persistentes de tristeza, ansiedade ou irritabilidade',
+      'Dificuldade para dormir ou alterações significativas no sono',
+      'Perda de interesse em atividades que antes eram prazerosas',
+      'Problemas de concentração ou tomada de decisões',
+      'Sensação de sobrecarga ou esgotamento emocional',
+      'Dificuldades nos relacionamentos pessoais ou profissionais',
+      'Baixa autoestima ou sentimentos de inadequação',
+      'Ataques de pânico ou sintomas físicos sem causa médica',
+      'Uso excessivo de álcool, drogas ou outros comportamentos de fuga',
+      'Desejo de crescimento pessoal e autoconhecimento',
+    ],
+  },
+
+  metadata: {
+    title: 'Terapia Individual em São Paulo | Psico Vila Olimpia',
+    description: 'Terapia individual com psicólogas especializadas em TCC na Vila Olímpia. Tratamento para ansiedade, depressão, autoestima. Agende sua consulta.',
+  },
+};
+---
+
+<SpecialtyLayout {specialty} />

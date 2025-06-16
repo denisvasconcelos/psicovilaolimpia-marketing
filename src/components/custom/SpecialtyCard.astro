@@ -1,0 +1,179 @@
+---
+export interface Props {
+  specialty: {
+    title: string;
+    description: string;
+    icon: string;
+    slug: string;
+    features?: string[];
+    isHighlighted?: boolean;
+    image?: string;
+  };
+  size?: 'default' | 'large';
+  showFeatures?: boolean;
+  showCTA?: boolean;
+}
+
+const { 
+  specialty, 
+  size = 'default',
+  showFeatures = false,
+  showCTA = false
+} = Astro.props;
+
+const cardClasses = size === 'large' 
+  ? 'p-8 md:p-10' 
+  : 'p-6 md:p-8';
+
+const titleClasses = size === 'large'
+  ? 'text-xl md:text-2xl'
+  : 'text-lg md:text-xl';
+---
+
+<div 
+  class={`specialty-card group relative bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 ${cardClasses} ${specialty.isHighlighted ? 'ring-2 ring-primary/20' : ''}`}
+>
+  <!-- Badge de destaque -->
+  {specialty.isHighlighted && (
+    <div class="absolute -top-3 left-6">
+      <span class="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">
+        Mais Procurada
+      </span>
+    </div>
+  )}
+
+  <!-- Imagem representativa -->
+  <div class="w-full h-48 bg-primary/10 dark:bg-primary/20 rounded-lg mb-4 overflow-hidden group-hover:bg-primary/15 transition-colors duration-300">
+    {specialty.image ? (
+      <img 
+        src={specialty.image} 
+        alt={`Imagem representativa de ${specialty.title}`}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+    ) : (
+      <div class="flex items-center justify-center w-full h-full">
+        <astro-icon name={specialty.icon} class="w-16 h-16 text-primary transition-transform duration-300 group-hover:scale-110" />
+      </div>
+    )}
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="flex-1">
+    <h3 class={`font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300 ${titleClasses}`}>
+      {specialty.title}
+    </h3>
+    
+    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+      {specialty.description}
+    </p>
+
+    <!-- Features opcionais -->
+    {showFeatures && specialty.features && (
+      <div class="mb-6">
+        <ul class="space-y-3">
+          {specialty.features.slice(0, 3).map(feature => (
+            <li class="flex items-start text-sm text-gray-600 dark:text-gray-300">
+              <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2 mr-3" style="background-color: #046a80;"></div>
+              <span class="leading-relaxed">{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <!-- CTA Button - Apenas se showCTA for true -->
+    {showCTA && (
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a 
+          href={`/${specialty.slug}`}
+          class="inline-flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-colors duration-300 text-sm group-hover:shadow-lg"
+          aria-label={`Saiba mais sobre ${specialty.title}`}
+        >
+          Saiba Mais
+          <astro-icon name="tabler:arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+        </a>
+        
+        <a 
+          href={`https://wa.me/5511985946105?text=Olá! Gostaria de saber mais sobre ${specialty.title}.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors duration-300 text-sm"
+          aria-label={`Agendar consulta de ${specialty.title} via WhatsApp`}
+        >
+          <astro-icon name="tabler:brand-whatsapp" class="w-4 h-4 mr-2" />
+          Agendar
+        </a>
+      </div>
+    )}
+  </div>
+
+  <!-- Efeito de hover sutil -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/2 to-secondary/2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+</div>
+
+<style>
+  .specialty-card {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .specialty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .specialty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(4, 106, 128, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .specialty-card:hover::before {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .specialty-card {
+      min-height: 300px;
+    }
+  }
+
+  .specialty-card:focus-within {
+    outline: 2px solid rgb(4 106 128);
+    outline-offset: 2px;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .specialty-card:hover astro-icon {
+    transition: transform 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const specialtyCards = document.querySelectorAll('.specialty-card');
+    
+    specialtyCards.forEach(card => {
+      // Remover parâmetros não utilizados para evitar warnings
+      card.addEventListener('click', function() {
+        const specialty = card.querySelector('h3')?.textContent;
+        // console.log(`Specialty card clicked: ${specialty}`);
+        // Usar a variável para evitar warning
+        if (specialty) {
+          // Tracking futuro aqui
+        }
+      });
+    });
+  });
+</script>

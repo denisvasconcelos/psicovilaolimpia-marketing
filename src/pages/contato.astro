@@ -1,0 +1,249 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Contato | Psico Vila Olimpia - Agende sua Consulta',
+  description: 'Entre em contato com a Psico Vila Olimpia. WhatsApp, formulário, endereço e horários de funcionamento. Agende sua consulta de psicoterapia hoje mesmo.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+  <HeroText 
+    tagline="Contato" 
+    title="Vamos Conversar?" 
+    subtitle="Entre em contato conosco e dê o primeiro passo rumo à sua transformação"
+  />
+
+  <!-- Seção Principal de Contato -->
+  <section class="py-12 md:py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        
+        <!-- Formulário de Contato - Lado Esquerdo -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Envie sua mensagem
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 mb-6">
+            Para agendamentos mais rápidos, use nosso WhatsApp. Caso prefira o formulário, nossa equipe responde em até 24 horas.
+          </p>
+          
+          <form class="space-y-6">
+            <div>
+              <label for="nome" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Nome Completo
+              </label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#046a80] focus:border-[#046a80] dark:bg-gray-700 dark:text-white"
+                placeholder="Seu nome completo"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                E-mail
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#046a80] focus:border-[#046a80] dark:bg-gray-700 dark:text-white"
+                placeholder="seu.email@exemplo.com"
+              />
+            </div>
+            
+            <div>
+              <label for="telefone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Telefone/WhatsApp
+              </label>
+              <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#046a80] focus:border-[#046a80] dark:bg-gray-700 dark:text-white"
+                placeholder="(11) 99999-9999"
+              />
+            </div>
+            
+            <div>
+              <label for="mensagem" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Mensagem
+              </label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                rows="5"
+                required
+                class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#046a80] focus:border-[#046a80] dark:bg-gray-700 dark:text-white resize-vertical"
+                placeholder="Conte-nos um pouco sobre o que você está buscando e como podemos ajudar..."
+              ></textarea>
+            </div>
+            
+            <div class="flex items-start">
+              <input
+                type="checkbox"
+                id="aceito-contato"
+                name="aceito-contato"
+                required
+                class="mt-1 h-4 w-4 text-[#046a80] border-gray-300 rounded focus:ring-[#046a80]"
+              />
+              <label for="aceito-contato" class="ml-2 text-sm text-gray-600 dark:text-gray-300">
+                Aceito receber contato por WhatsApp e e-mail sobre agendamentos e informações da clínica.
+              </label>
+            </div>
+            
+            <button
+              type="submit"
+              class="w-full bg-[#046a80] hover:bg-[#035561] text-white font-medium py-3 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#046a80] focus:ring-offset-2"
+            >
+              Enviar Mensagem
+            </button>
+          </form>
+          
+          <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center">
+            Nossa equipe responde em até 24 horas. Para atendimento mais rápido, use nosso WhatsApp.
+          </p>
+        </div>
+
+        <!-- Informações da Clínica - Lado Direito -->
+        <div class="space-y-6">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+              Informações da Clínica
+            </h2>
+            
+            <div class="space-y-6">
+              <!-- WhatsApp -->
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <Icon name="tabler:brand-whatsapp" class="w-6 h-6" style="color: #046a80;" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white">WhatsApp</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                    Atendimento rápido e direto
+                  </p>
+                  <a 
+                    href="https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta."
+                    target="_blank"
+                    class="text-[#046a80] hover:text-[#035561] font-medium"
+                  >
+                    (11) 98594-6105
+                  </a>
+                </div>
+              </div>
+
+              <!-- E-mail -->
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <Icon name="tabler:mail" class="w-6 h-6" style="color: #046a80;" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white">E-mail</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                    Respondemos em até 24 horas
+                  </p>
+                  <a 
+                    href="mailto:contato@psicovilaolimpia.com.br"
+                    class="text-[#046a80] hover:text-[#035561] font-medium"
+                  >
+                    contato@psicovilaolimpia.com.br
+                  </a>
+                </div>
+              </div>
+
+              <!-- Endereço -->
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <Icon name="tabler:map-pin" class="w-6 h-6" style="color: #046a80;" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white">Endereço</h3>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                    Rua Helena, 285 - 10º andar<br>
+                    Vila Olímpia - São Paulo/SP<br>
+                    CEP: 04552-050
+                  </p>
+                  <a 
+                    href="https://maps.google.com/?q=Rua+Helena+285+Vila+Olimpia+São+Paulo"
+                    target="_blank"
+                    class="text-[#046a80] hover:text-[#035561] font-medium"
+                  >
+                    Ver no Google Maps
+                  </a>
+                </div>
+              </div>
+
+              <!-- Horários -->
+              <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                  <Icon name="tabler:clock" class="w-6 h-6" style="color: #046a80;" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white">Horários de Atendimento</h3>
+                  <div class="text-gray-600 dark:text-gray-300 text-sm space-y-1 mt-2">
+                    <p>Segunda a Sexta: 8h às 20h</p>
+                    <p>Sábado: 8h às 12h</p>
+                    <p>Domingo: Fechado</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão WhatsApp Destacado -->
+          <div class="bg-gradient-to-r from-[#046a80] to-[#73CEE1] rounded-lg p-6 text-white text-center">
+            <Icon name="tabler:brand-whatsapp" class="w-8 h-8 mx-auto mb-3" />
+            <h3 class="text-lg font-semibold mb-2">Agende Agora pelo WhatsApp</h3>
+            <p class="text-sm mb-4 opacity-90">
+              Atendimento mais rápido e prático
+            </p>
+            <a 
+              href="https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta."
+              target="_blank"
+              class="inline-block bg-white text-[#046a80] font-semibold py-2 px-6 rounded-md hover:bg-gray-100 transition duration-300"
+            >
+              Conversar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa Integrado -->
+  <div class="py-12 md:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mx-auto max-w-4xl text-center mb-8">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+          Como Chegar
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+          Veja nossa localização exata e planeje sua visita
+        </p>
+      </div>
+      
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.143837119076!2d-46.68996172369847!3d-23.593604478785988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a0e2c6c7c37%3A0x8b8e4f4c6c7c7c37!2sRua%20Helena%2C%20285%20-%20Vila%20Ol%C3%ADmpia%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1698765432100!5m2!1spt-BR!2sbr"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da Psico Vila Olimpia"
+          class="w-full"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</Layout>

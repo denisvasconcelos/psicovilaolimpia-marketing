@@ -2,10 +2,9 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
+// import WhatsAppFloat from '~/components/custom/WhatsAppFloat.astro'; // DESATIVADO TEMPORARIAMENTE
 
 import { headerData, footerData } from '~/navigation';
-
 import type { MetaData } from '~/types';
 
 export interface Props {
@@ -13,14 +12,26 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
+
+// Converter actions para o tipo correto esperado pelo Header
+const headerActions = headerData.actions?.map(action => ({
+  text: action.text,
+  href: action.href,
+  variant: action.variant as 'primary' | 'secondary' | 'tertiary' | 'link' | undefined,
+  target: action.target,
+  icon: action.icon,
+})) || [];
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement">
-    <Announcement />
-  </slot>
+  <slot name="announcement" />
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header 
+      links={headerData.links}
+      actions={headerActions}
+      showToggleTheme={true}
+      isSticky={true}
+    />
   </slot>
   <main>
     <slot />
@@ -28,4 +39,235 @@ const { metadata } = Astro.props;
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
+
+  <!-- WhatsApp Float Button - TEMPORARIAMENTE DESATIVADO -->
+  <!-- <WhatsAppFloat /> -->
 </Layout>
+
+<style>
+  /* Estilos globais para o layout da Psico Vila Olimpia */
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
+  :global(body) {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Header com comportamento de esconder ao rolar */
+  :global(header) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark header) {
+    background: rgba(31, 41, 55, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Classe aplicada quando rolar para baixo */
+  :global(header.header-hidden) {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  /* Classe aplicada quando rolar para cima */
+  :global(header.header-visible) {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Garantir que o main tenha espaçamento adequado para compensar o header fixo */
+  main {
+    min-height: calc(100vh - 200px);
+    position: relative;
+    padding-top: 80px; /* Altura aproximada do header */
+  }
+
+  /* Melhorar a tipografia global */
+  :global(h1, h2, h3, h4, h5, h6) {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+
+  :global(p) {
+    line-height: 1.6;
+    margin-bottom: 1em;
+  }
+
+  /* Estilização para links com a cor primária */
+  :global(a) {
+    transition: color 0.3s ease;
+  }
+
+  :global(a:hover) {
+    color: rgb(4 106 128);
+  }
+
+  /* Melhorar a acessibilidade dos botões */
+  :global(button, .btn) {
+    transition: all 0.3s ease;
+  }
+
+  :global(button:focus-visible, .btn:focus-visible) {
+    outline: 2px solid rgb(4 106 128);
+    outline-offset: 2px;
+  }
+
+  /* Estilização para seções alternadas */
+  :global(.section-bg-neutral) {
+    background-color: rgb(248 249 250);
+  }
+
+  :global(.dark .section-bg-neutral) {
+    background-color: rgb(31 41 55);
+  }
+
+  /* Animações suaves para elementos que entram na tela */
+  :global(.intersect-once) {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  /* Melhorar o spacing consistente */
+  :global(.container) {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    :global(.container) {
+      padding: 0 2rem;
+    }
+  }
+
+  /* Estilo para cards hover effect */
+  :global(.card-hover) {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  :global(.card-hover:hover) {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Melhorar a legibilidade em dispositivos móveis */
+  @media (max-width: 768px) {
+    :global(h1) {
+      font-size: 2rem;
+    }
+    
+    :global(h2) {
+      font-size: 1.75rem;
+    }
+    
+    :global(h3) {
+      font-size: 1.5rem;
+    }
+
+    /* Ajustar padding do container em mobile */
+    :global(.container) {
+      padding: 0 1rem;
+    }
+
+    /* Ajustar padding do main para mobile */
+    main {
+      padding-top: 70px; /* Header menor no mobile */
+    }
+  }
+
+  /* Cores da marca aplicadas globalmente */
+  :global(.text-primary) {
+    color: rgb(4 106 128) !important;
+  }
+
+  :global(.bg-primary) {
+    background-color: rgb(4 106 128) !important;
+  }
+
+  :global(.border-primary) {
+    border-color: rgb(4 106 128) !important;
+  }
+
+  :global(.text-secondary) {
+    color: rgb(115 206 225) !important;
+  }
+
+  :global(.bg-secondary) {
+    background-color: rgb(115 206 225) !important;
+  }
+</style>
+
+<script>
+  // Script para controlar o comportamento do header ao rolar
+  document.addEventListener('DOMContentLoaded', function() {
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 100;
+    let scrollDirection = 'up';
+    const header = document.querySelector('header');
+    
+    // Early return se header não existir
+    if (!header) return;
+
+    // Função para controlar a visibilidade do header
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      
+      // Determinar direção do scroll
+      if (currentScrollY > lastScrollY) {
+        scrollDirection = 'down';
+      } else {
+        scrollDirection = 'up';
+      }
+
+      // Verificar se header ainda existe antes de manipular
+      if (!header) return;
+
+      // Aplicar classes baseado na direção e posição do scroll
+      if (currentScrollY < 50) {
+        // No topo da página - sempre mostrar
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      } else if (scrollDirection === 'down' && currentScrollY > scrollThreshold) {
+        // Rolando para baixo e passou do threshold - esconder
+        header.classList.add('header-hidden');
+        header.classList.remove('header-visible');
+      } else if (scrollDirection === 'up') {
+        // Rolando para cima - mostrar
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    // Throttle para melhor performance
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+        setTimeout(() => {
+          ticking = false;
+        }, 16); // ~60fps
+      }
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Inicializar estado
+    if (header) {
+      header.classList.add('header-visible');
+    }
+  });
+</script>

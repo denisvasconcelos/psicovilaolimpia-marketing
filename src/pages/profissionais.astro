@@ -1,0 +1,155 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ProfessionalCard from '~/components/custom/ProfessionalCard.astro';
+import vanessaImg from '~/assets/images/psico-vanessa-lopes.webp';
+import monicaImg from '~/assets/images/psico-monica-fernandes.webp';
+import pamelaImg from '~/assets/images/psico-pamela-duarte.webp';
+import lorenaImg from '~/assets/images/psico-lorena-almeida.webp';
+import alineImg from '~/assets/images/psico-aline-alencar.webp';
+import andreaImg from '~/assets/images/psico-andrea-balsalobre.webp';
+
+const metadata = {
+  title: 'Profissionais | Psico Vila Olimpia - Psicólogas Especializadas',
+  description: 'Conheça nossa equipe de psicólogas especializadas em TCC. Dra. Aline e equipe com vasta experiência em psicoterapia na Vila Olímpia.',
+};
+
+// Dados dos profissionais
+const professionals = [
+  {
+    name: 'Vanessa Lopes',
+    crp: '06/161858',
+    description: 'Especialista em Terapia Cognitivo-Comportamental e Gestão do Estresse. Atende adolescentes, adultos, casais e idosos na Vila Olímpia/SP. Ministra palestras em empresas e escolas sobre saúde mental e desenvolvimento emocional.',
+    specialties: [
+      'Ansiedade',
+      'Depressão',
+      'Terapia de casal',
+      'TDAH',
+      'Gestão do estresse e burnout'
+    ],
+    image: vanessaImg.src,
+  },
+  {
+    name: 'Mônica Fernandes',
+    crp: '04/35949',
+    description: 'Psicóloga com mais de 13 anos de experiência clínica, formada pela PUC/MG com pós-graduação em Resiliência Multiprofissional. Atende adolescentes, adultos, casais e idosos na Vila Olímpia/SP usando Terapia Cognitivo-Comportamental.',
+    specialties: [
+      'Ansiedade',
+      'Depressão',
+      'Transtornos alimentares',
+      'Orientação de carreira',
+      'Gestação e puerpério'
+    ],
+    image: monicaImg.src,
+  },
+  {
+    name: 'Pamela Duarte',
+    crp: '06/124467',
+    description: 'Neuropsicóloga com mais de 16 anos de experiência, especialista pela Santa Casa de São Paulo. Atua com avaliação neuropsicológica e reabilitação cognitiva para crianças, adolescentes, adultos e idosos na Vila Olímpia/SP.',
+    specialties: [
+      'Avaliação neuropsicológica',
+      'Reabilitação neuropsicológica e cognitiva',
+      'Orientação parental e familiar',
+      'Psicoeducação pós-diagnóstico',
+      'Orientação profissional e de carreira'
+    ],
+    image: pamelaImg.src,
+  },
+  {
+    name: 'Lorena Almeida',
+    crp: '06/156855',
+    description: 'Especialista em Terapia Cognitivo-Comportamental com 10 anos de experiência. Pós-graduada em Avaliação Psicológica com ênfase em cirurgia bariátrica. Atende adultos, casais e adolescentes na Vila Olímpia/SP.',
+    specialties: [
+      'Ansiedade e síndrome do pânico',
+      'Transtornos alimentares e laudos para cirurgia bariátrica',
+      'Transtorno Borderline e narcisista',
+      'TDAH e transtornos depressivos',
+      'Laudos psicológicos diversos (concursos, ANAC, redesignação sexual)'
+    ],
+    image: lorenaImg.src,
+  },
+  {
+    name: 'Aline Alencar',
+    crp: '06/117308',
+    description: 'Especialista em Terapia Cognitivo-Comportamental com 10 anos de experiência dedicados exclusivamente à terapia psicológica premium. Referência em São Paulo com milhares de horas clínicas e centenas de pacientes atendidos.',
+    specialties: [
+      'Terapia de casal',
+      'Terapia para adultos',
+      'Terapia corporativa',
+      'Terapia cognitivo-comportamental',
+      'Desenvolvimento e transformação pessoal'
+    ],
+    image: alineImg.src,
+  },
+  {
+    name: 'Andréa Balsalobre',
+    crp: '06/52802',
+    description: 'Neuropsicóloga com 25 anos de experiência, especialista em Neuropsicologia, Psicomotricidade e Método Padovan. Docente universitária, palestrante e supervisora clínica. Atende crianças, adolescentes, adultos e idosos na Vila Olímpia/SP.',
+    specialties: [
+      'Avaliação neuropsicológica',
+      'Reabilitação neuropsicológica e cognitiva',
+      'Reabilitação psicomotora',
+      'Método Padovan de reorganização neurofuncional',
+      'Psicologia clínica'
+    ],
+    image: andreaImg.src,
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Nossa Equipe"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Conheça Nossas <span class="text-primary dark:text-blue-300">Profissionais Especializadas</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Psicólogas pós-graduadas em Terapia Cognitivo-Comportamental, com vasta experiência clínica 
+      e comprometimento genuíno com a transformação de vidas.
+    </Fragment>
+  </Hero>
+
+  <!-- Grid de Profissionais -->
+  <section class="-mt-16 md:-mt-20 pt-4 md:pt-6">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <!-- Grid de profissionais - máximo 2 por linha -->
+      <div class="grid gap-4 md:gap-6 lg:grid-cols-2">
+        {professionals.map((professional) => (
+          <ProfessionalCard professional={professional} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    title="Pronto para conhecer nossa abordagem?"
+    subtitle="Agende uma conversa inicial e descubra como nossa equipe pode ajudar na sua jornada de transformação"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta com a equipe da Psico Vila Olimpia.',
+        target: '_blank',
+        icon: 'tabler:brand-whatsapp',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20"></div>
+    </Fragment>
+  </CallToAction>
+</Layout>

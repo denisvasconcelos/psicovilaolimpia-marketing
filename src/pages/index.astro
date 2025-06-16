@@ -1,399 +1,454 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import SpecialtyCard from '~/components/custom/SpecialtyCard.astro';
+import unidade01 from '~/assets/images/unidade/psico-vila-olimpia-01.jpg';
+import unidade03 from '~/assets/images/unidade/psico-vila-olimpia-03.jpg';
+import unidade05 from '~/assets/images/unidade/psico-vila-olimpia-05.jpg';
+import unidade06 from '~/assets/images/unidade/psico-vila-olimpia-06.jpg';
+import unidade07 from '~/assets/images/unidade/psico-vila-olimpia-07.jpg';
+import unidade08 from '~/assets/images/unidade/psico-vila-olimpia-08.jpg';
+import unidade09 from '~/assets/images/unidade/psico-vila-olimpia-09.jpg';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Psicólogas em São Paulo | Psico Vila Olimpia',
+  description: 'Psicoterapia de qualidade na Vila Olímpia. Terapia individual, casal, familiar. Profissionais especializadas, atendimento presencial e online.',
   ignoreTitleTemplate: true,
 };
+
+// Dados das especialidades
+const specialties = [
+  {
+    title: 'Terapia Individual',
+    description: 'Descubra seu potencial através do autoconhecimento. Tratamos ansiedade, depressão, estresse e promovemos o equilíbrio emocional.',
+    icon: 'tabler:user',
+    slug: 'terapia-individual',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Tratamento de ansiedade e pânico',
+      'Superação da depressão',
+      'Fortalecimento da autoestima'
+    ],
+    isHighlighted: true,
+  },
+  {
+    title: 'Terapia de Casal',
+    description: 'Fortaleça seus vínculos afetivos. Trabalhamos comunicação, conflitos e construção de relacionamentos saudáveis.',
+    icon: 'tabler:heart',
+    slug: 'terapia-de-casal',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Melhoria da comunicação',
+      'Resolução de conflitos',
+      'Reconstrução da intimidade'
+    ],
+  },
+  {
+    title: 'Terapia Familiar',
+    description: 'Harmonia familiar é possível. Mediamos conflitos e fortalecemos laços entre gerações.',
+    icon: 'tabler:users',
+    slug: 'terapia-familiar',
+    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Mediação de conflitos familiares',
+      'Fortalecimento de vínculos',
+      'Dinâmica familiar saudável'
+    ],
+  },
+  {
+    title: 'Terapia Infantil e Adolescente',
+    description: 'Cuidado especializado para cada fase do desenvolvimento. Apoio em dificuldades escolares, comportamentais e emocionais.',
+    icon: 'tabler:baby-carriage',
+    slug: 'terapia-infantil-adolescente',
+    image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Dificuldades escolares',
+      'Problemas comportamentais',
+      'Desenvolvimento emocional'
+    ],
+  },
+  {
+    title: 'Psiquiatria',
+    description: 'Tratamento médico integrado. Diagnóstico e medicação quando necessário, sempre com abordagem humanizada.',
+    icon: 'tabler:brain',
+    slug: 'psiquiatria',
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Diagnóstico especializado',
+      'Prescrição médica',
+      'Acompanhamento integrado'
+    ],
+  },
+  {
+    title: 'Avaliações Psicológicas',
+    description: 'Laudos especializados para cirurgias, concursos e demandas específicas com rigor técnico e agilidade.',
+    icon: 'tabler:clipboard-check',
+    slug: 'avaliacoes-psicologicas',
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    features: [
+      'Laudos para cirurgias',
+      'Avaliações para concursos',
+      'Relatórios especializados'
+    ],
+  },
+];
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
   <Hero
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Gostaria de agendar uma consulta.',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:brand-whatsapp',
       },
-      { text: 'Learn more', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ 
+      src: '~/assets/images/hero-psicologa.jpg', 
+      alt: 'Psicóloga acolhedora em ambiente moderno - Psico Vila Olimpia' 
+    }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      Transforme sua vida com as <span class="text-primary dark:text-blue-300">melhores psicólogas</span> de São Paulo
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      <span class="font-medium">Atendimento psicológico especializado e acolhedor na Vila Olímpia.</span> 
+      Presencial e online. Mais de 10 anos transformando vidas através da psicoterapia de qualidade.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- Especialidades - Custom Section com SpecialtyCard -->
+  <section id="especialidades" class="-mt-12 md:-mt-16 pt-8 md:pt-12 lg:pt-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <!-- Header da seção -->
+      <div class="mx-auto max-w-3xl text-center mb-8 md:mb-12">
+        <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">
+          Especialidades
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+          Nossas Especialidades
+        </h2>
+        <p class="text-xl text-muted dark:text-slate-300">
+          Oferecemos atendimento especializado para cada momento da sua vida
+        </p>
+      </div>
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+      <!-- Grid de especialidades -->
+      <div class="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {specialties.map((specialty) => (
+          <SpecialtyCard 
+            specialty={specialty} 
+            showFeatures={true}
+          />
+        ))}
+      </div>
 
-  <!-- Features Widget *************** -->
+    </div>
 
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
+    <!-- Background decorativo -->
+    <div class="absolute inset-0 bg-gray-50 dark:bg-transparent -z-10"></div>
+  </section>
 
-  <!-- Content Widget **************** -->
+  <!-- Por que nos escolher - Seção customizada com carrousel -->
+  <section class="py-8 md:py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="grid gap-8 md:gap-12 lg:gap-16 md:grid-cols-2 lg:items-center">
+        
+        <!-- Carrousel de imagens -->
+        <div class="order-2 md:order-1">
+          <div class="carousel-container relative overflow-hidden rounded-xl shadow-lg">
+            <div class="carousel-track flex transition-transform duration-500 ease-in-out" id="carouselTrack">
+              <img src={unidade01.src} alt="Consultório Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade03.src} alt="Ambiente acolhedor Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade05.src} alt="Sala de atendimento Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade06.src} alt="Recepção Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade07.src} alt="Espaço terapêutico Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade08.src} alt="Consultório premium Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+              <img src={unidade09.src} alt="Ambiente profissional Psico Vila Olimpia" class="carousel-slide w-full h-96 object-cover flex-shrink-0" />
+            </div>
+            
+            <!-- Indicadores -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white active" data-slide="0"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="1"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="2"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="3"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="4"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="5"></button>
+              <button class="carousel-indicator w-3 h-3 bg-white/50 rounded-full transition-colors duration-200 hover:bg-white" data-slide="6"></button>
+            </div>
+          </div>
+        </div>
 
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 5.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
-    </Fragment>
+        <!-- Conteúdo -->
+        <div class="order-1 md:order-2">
+          <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">
+            Por que nos escolher
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+            Por que somos referência em psicoterapia?
+          </h2>
+          <p class="text-xl text-muted dark:text-slate-300 mb-8">
+            Mais de 10 anos transformando vidas em São Paulo
+          </p>
 
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+          <!-- Lista de diferenciais -->
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:award" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Profissionais Qualificadas</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Psicólogas pós-graduadas com especialização em TCC e vasta experiência clínica.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:building" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Atendimento Premium</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Ambiente acolhedor e sigiloso na Vila Olímpia, pensado para o seu bem-estar.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:device-laptop" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Flexibilidade Total</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Modalidades presencial, online e híbrida para se adaptar à sua rotina.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:chart-line" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Resultados Comprovados</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Centenas de vidas transformadas através de nossa metodologia humanizada.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:clock" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Agilidade no Atendimento</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Agendamento rápido via WhatsApp e horários flexíveis, incluindo fins de semana.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-4">
+                <astro-icon name="tabler:shield-check" class="w-6 h-6" style="color: #046a80;" />
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Sigilo Absoluto</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">Ambiente discreto e profissional com total garantia de privacidade.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Steps Widget ****************** -->
-
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Como começar sua jornada de transformação"
+    subtitle="Um processo simples e acolhedor para cuidar da sua saúde mental"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Primeiro Contato',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'Entre em contato via WhatsApp ou formulário. Nossa equipe responde rapidamente e tira todas suas dúvidas sobre especialidades, horários e modalidades de atendimento.',
+        icon: 'tabler:message-circle',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: 'Agendamento',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          'Escolha o horário ideal entre nossas opções flexíveis de segunda a sábado. Confirmamos por WhatsApp ou telefone e enviamos todas as informações necessárias.',
+        icon: 'tabler:calendar',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Primeira Sessão',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Acolhimento personalizado para entender suas necessidades, histórico e objetivos. Definimos juntos o melhor plano terapêutico para sua situação específica.',
+        icon: 'tabler:users',
       },
       {
-        title: 'Ready!',
-        icon: 'tabler:check',
+        title: 'Acompanhamento',
+        description:
+          'Sessões regulares com foco em resultados concretos e evolução contínua do seu bem-estar. Monitoramento constante do progresso e ajustes quando necessário.',
+        icon: 'tabler:trending-up',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      src: 'https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80',
+      alt: 'Caminho de transformação e progresso - jornada terapêutica acolhedora',
     }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
+  </Steps>
 
   <!-- CallToAction Widget *********** -->
-
   <CallToAction
+    title="Pronto para transformar sua vida?"
+    subtitle="Agende sua consulta hoje mesmo e dê o primeiro passo rumo ao seu bem-estar"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Agendar Consulta',
+        href: 'https://wa.me/5511985946105?text=Olá! Quero agendar minha consulta e começar minha transformação.',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:brand-whatsapp',
       },
     ]}
   >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white"></div>
     </Fragment>
   </CallToAction>
 </Layout>
+
+<style>
+  /* Estilos específicos para a seção de especialidades */
+  #especialidades {
+    position: relative;
+  }
+
+  /* Animação de entrada para os cards */
+  #especialidades .grid > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  #especialidades .grid > *:nth-child(1) { animation-delay: 0.1s; }
+  #especialidades .grid > *:nth-child(2) { animation-delay: 0.2s; }
+  #especialidades .grid > *:nth-child(3) { animation-delay: 0.3s; }
+  #especialidades .grid > *:nth-child(4) { animation-delay: 0.4s; }
+  #especialidades .grid > *:nth-child(5) { animation-delay: 0.5s; }
+  #especialidades .grid > *:nth-child(6) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Melhorar responsividade do grid */
+  @media (max-width: 640px) {
+    #especialidades .grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1024px) {
+    #especialidades .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Efeito de parallax sutil no background */
+  #especialidades::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(4, 106, 128, 0.02) 0%, rgba(115, 206, 225, 0.02) 100%);
+    pointer-events: none;
+  }
+
+  /* Estilos do carrousel */
+  .carousel-indicator.active {
+    background-color: white !important;
+  }
+</style>
+
+<script is:inline>
+  // Função para inicializar o carrousel
+  function initCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    if (!track || indicators.length === 0) {
+      console.warn('Carousel elements not found');
+      return;
+    }
+
+    let currentSlide = 0;
+    const totalSlides = 7;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    // Indicadores clicáveis
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+        
+        // Reiniciar auto-play quando usuário interage
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+      });
+    });
+
+    // Função para iniciar auto-play
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 3000);
+    }
+
+    // Inicializar carrousel
+    updateCarousel();
+    startAutoPlay();
+
+    // Pausar auto-play quando mouse está sobre o carrousel
+    track.parentElement.addEventListener('mouseenter', () => {
+      clearInterval(autoPlayInterval);
+    });
+
+    track.parentElement.addEventListener('mouseleave', () => {
+      startAutoPlay();
+    });
+  }
+
+  // Inicializar quando DOM estiver pronto
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+</script>
