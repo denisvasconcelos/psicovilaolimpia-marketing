@@ -42,22 +42,28 @@ const metadata = {
       Mais de uma década transformando vidas através da psicoterapia de qualidade. 
       Conheça nossa trajetória, valores e o que nos torna únicos no cuidado com a saúde mental.
     </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
+    </Fragment>
   </Hero>
 
   <!-- Stats Widget ****************** -->
-  <Stats
-    title="Nossa trajetória em números"
-    subtitle="Dados que refletem nosso compromisso com a excelência no atendimento psicológico"
-    stats={[
-      { title: 'Anos de experiência', amount: '10+' },
-      { title: 'Vidas transformadas', amount: '500+' },
-      { title: 'Profissionais especializadas', amount: '3' },
-      { title: 'Satisfação dos pacientes', amount: '98%' },
-    ]}
-  />
+  <div class="-mt-12 md:-mt-16">
+    <Stats
+      title="Nossa trajetória em números"
+      subtitle="Dados que refletem nosso compromisso com a excelência no atendimento psicológico"
+      stats={[
+        { title: 'Anos de experiência', amount: '10+' },
+        { title: 'Vidas transformadas', amount: '500+' },
+        { title: 'Profissionais especializadas', amount: '6' },
+        { title: 'Satisfação dos pacientes', amount: '98%' },
+      ]}
+    />
+  </div>
 
   <!-- Nossa Jornada - Seção customizada -->
-  <section class="py-8 md:py-12 lg:py-16">
+  <section class="py-8 md:py-12 lg:py-16 bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="text-center mb-8 md:mb-12">
         <p class="text-base text-primary font-bold tracking-wide uppercase mb-2">Nossa Jornada</p>
@@ -86,36 +92,82 @@ const metadata = {
         </div>
       </div>
     </div>
-    
-    <div class="absolute inset-0 bg-gray-50 dark:bg-transparent -z-10"></div>
   </section>
 
-  <!-- Missão, Visão e Valores - Content Widget -->
-  <Content
-    title="Missão, Visão e Valores"
-    subtitle="Os pilares que guiam nosso trabalho e nossa relação com cada paciente"
-    items={[
-      {
-        title: 'Nossa Missão',
-        description: 'Proporcionar atendimento psicológico de excelência, criando um espaço seguro e acolhedor onde cada pessoa pode descobrir seu potencial de transformação e bem-estar.',
-        icon: 'tabler:target',
-      },
-      {
-        title: 'Nossa Visão',
-        description: 'Ser reconhecida como a principal referência em psicoterapia premium em São Paulo, expandindo nosso impacto positivo na saúde mental da comunidade.',
-        icon: 'tabler:eye',
-      },
-      {
-        title: 'Nossos Valores',
-        description: 'Excelência no atendimento, acolhimento genuíno, ética profissional irrepreensível, inovação constante e foco em resultados reais para nossos pacientes.',
-        icon: 'tabler:heart',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
-      alt: 'Valores da Psico Vila Olimpia - Excelência, acolhimento e ética',
-    }}
-  />
+  <!-- Missão, Visão e Valores - Custom Section -->
+  <section class="py-16 md:py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      
+      <!-- Header da seção -->
+      <div class="mx-auto max-w-3xl text-center mb-12 md:mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+          Missão, Visão e Valores
+        </h2>
+        <p class="text-xl text-muted dark:text-slate-300">
+          Os pilares que guiam nosso trabalho e nossa relação com cada paciente
+        </p>
+      </div>
+
+      <!-- Grid de missão, visão e valores -->
+      <div class="grid gap-8 md:gap-12 sm:grid-cols-1 lg:grid-cols-3">
+        
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-6">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full text-white" style="background-color: #046a80;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Nossa Missão
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Proporcionar atendimento psicológico de excelência, criando um espaço seguro e acolhedor onde cada pessoa pode descobrir seu potencial de transformação e bem-estar.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-6">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full text-white" style="background-color: #046a80;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Nossa Visão
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Ser reconhecida como a principal referência em psicoterapia premium em São Paulo, expandindo nosso impacto positivo na saúde mental da comunidade.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="flex items-center justify-center mb-6">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full text-white" style="background-color: #046a80;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Nossos Valores
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Excelência no atendimento, acolhimento genuíno, ética profissional irrepreensível, inovação constante e foco em resultados reais para nossos pacientes.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Background decorativo -->
+    <div class="absolute inset-0 bg-gray-50 dark:bg-transparent -z-10"></div>
+  </section>
 
   <!-- Diferenciais - Features3 Widget -->
   <Features3
@@ -156,12 +208,12 @@ const metadata = {
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
     </Fragment>
   </Features3>
 
   <!-- Um espaço pensado para o seu bem-estar - Seção com carrousel -->
-  <section class="py-8 md:py-12 lg:py-16">
+  <section class="py-8 md:py-12 lg:py-16 bg-white dark:bg-slate-900">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div class="grid gap-8 md:gap-12 lg:gap-16 md:grid-cols-2 lg:items-center">
         
@@ -300,7 +352,7 @@ const metadata = {
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-primary/10 dark:bg-primary/20"></div>
+      <div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
     </Fragment>
   </CallToAction>
 </Layout>
