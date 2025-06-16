@@ -1,8 +1,7 @@
 ---
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import { Icon } from 'astro-icon/components';
 import type { CallToAction, Widget } from '~/types';
-import Headline from '~/components/ui/Headline.astro';
-import Button from '~/components/ui/Button.astro';
 
 interface Props extends Widget {
   title?: string;
@@ -26,33 +25,43 @@ const {
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-  <div
-    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
-  >
-    <Headline
-      title={title}
-      subtitle={subtitle}
-      tagline={tagline}
-      classes={{
-        container: 'mb-0 md:mb-0',
-        title: 'text-4xl md:text-4xl font-bold tracking-tighter mb-4 font-heading',
-        subtitle: 'text-xl text-muted dark:text-slate-400',
-      }}
-    />
-    {
-      actions && (
-        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
-          {Array.isArray(actions) ? (
-            actions.map((action) => (
-              <div class="flex w-full sm:w-auto">
-                <Button {...(action || {})} class="w-full sm:mb-0" />
-              </div>
-            ))
-          ) : (
-            <Fragment set:html={actions} />
-          )}
-        </div>
-      )
-    }
+  <div class="bg-gradient-to-r from-[#046a80] to-[#73CEE1] rounded-lg p-6 md:p-8 lg:p-12 text-white text-center">
+    {tagline && (
+      <p class="text-base text-white/90 font-bold tracking-wide uppercase mb-2">
+        {tagline}
+      </p>
+    )}
+    
+    {title && (
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-4 font-heading text-white">
+        {title}
+      </h2>
+    )}
+    
+    {subtitle && (
+      <p class="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    )}
+    
+    {actions && (
+      <div class="flex flex-col sm:flex-row sm:justify-center gap-4">
+        {Array.isArray(actions) ? (
+          actions.map((action) => (
+            <a
+              href={action.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-white text-[#046a80] font-semibold py-2 px-6 rounded-md hover:bg-gray-100 transition duration-300"
+            >
+              {action.icon && <Icon name={action.icon} class="w-5 h-5 mr-2 inline" />}
+              {action.text}
+            </a>
+          ))
+        ) : (
+          <Fragment set:html={actions} />
+        )}
+      </div>
+    )}
   </div>
 </WidgetWrapper>
